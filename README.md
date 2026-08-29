@@ -47,6 +47,10 @@ docker compose up --build
 
 Changeflare is now running at `http://localhost:3000`. Open it and create your admin account.
 
+If port 5432 or 3000 is already taken on your machine, set `POSTGRES_PORT`
+and/or `APP_PORT` in `.env` (commented out in `.env.example`) before running
+`docker compose up --build`.
+
 **From source, against your own Postgres:**
 
 ```bash
@@ -71,7 +75,11 @@ npm start
 
 4. Reload that page — a bell icon appears in the bottom-right corner with an unread badge for your new post.
 
+<img src="docs/assets/admin-dashboard.png" alt="Changeflare admin dashboard: published/draft/widget-opens counters, the install snippet, and a posts table with views and clicks" width="900" />
+
 The same posts are also published at `https://your-instance.example/changelog`, an unauthenticated page you can link from a footer even if you also embed the widget.
+
+<img src="docs/assets/public-changelog.png" alt="Public /changelog page listing published posts" width="900" />
 
 ## Configuration
 
