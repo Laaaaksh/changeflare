@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: changeflare
+      POSTGRES_PASSWORD: changeflare
+      POSTGRES_DB: changeflare
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U changeflare"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # One-off job: applies pending Prisma migrations, then exits. Uses the
+  # `build` stage (full node_modules incl. the prisma CLI) rather than the
+  # slim runtime image, which deliberately excludes dev tooling.
+  migrate:
+    build:
+      context: .
+      target: build
+    working_dir: /repo/apps/web
+    command: ["npx", "prisma", "migrate", "deploy"]
+    environment:
+      DATABASE_URL: postgresql://changeflare:changeflare@postgres:5432/changeflare
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  app:
+    build:
+      context: .
+      target: runtime
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://changeflare:changeflare@postgres:5432/changeflare
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in your .env — see .env.example (openssl rand -base64 32)}
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  postgres-data:
