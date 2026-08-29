@@ -1,0 +1,19 @@
+{
+  "name": "@changeflare/widget",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Embeddable changelog widget bundle for Changeflare",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "test": "NODE_OPTIONS=--no-experimental-webstorage vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "jsdom": "28.0.0"
+  }
+}

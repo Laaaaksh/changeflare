@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+/// A single changelog entry. audienceRule is either null (shown to everyone)
+/// or a JSON array of { attribute, value } conditions that must all match the
+/// attributes the host page passes into the widget (simple AND matching, v1
+/// deliberately has no rules engine).
+model Post {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  title         String
+  bodyMarkdown  String
+  bodyHtml      String
+  excerpt       String
+  coverImageUrl String?
+  status        PostStatus @default(DRAFT)
+  publishedAt   DateTime?
+  audienceRule  Json?
+  views         Int        @default(0)
+  clicks        Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+/// Per-visitor "read up to" cursor, keyed by the external userId a host app
+/// optionally passes into the widget so read state follows a logged-in user
+/// across browsers. Anonymous visitors rely on localStorage only (no row here).
+model ReadState {
+  id             String   @id @default(cuid())
+  externalUserId String   @unique
+  lastReadAt     DateTime
+  updatedAt      DateTime @updatedAt
+}
+
+/// Single-row table for instance-wide counters that don't belong to one post.
+model Settings {
+  id          String @id @default("singleton")
+  widgetOpens Int    @default(0)
+}

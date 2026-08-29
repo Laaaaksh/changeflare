@@ -1,0 +1,34 @@
+{
+  "name": "changeflare",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w packages/widget && npm run dev -w apps/web",
+    "build": "npm run build -w packages/widget && npm run build -w apps/web",
+    "start": "npm run start -w apps/web",
+    "test": "npm run test -w packages/widget && npm run test -w apps/web",
+    "lint": "npm run lint -w packages/widget && npm run lint -w apps/web",
+    "format": "prettier --write .",
+    "db:generate": "npm run db:generate -w apps/web",
+    "db:migrate": "npm run db:migrate -w apps/web",
+    "db:migrate:deploy": "npm run db:migrate:deploy -w apps/web"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "unrs-resolver@1.12.2": true,
+    "fsevents@2.3.3": true,
+    "@prisma/client@6.19.3": true,
+    "prisma@6.19.3": true,
+    "@prisma/engines@6.19.3": true
+  }
+}

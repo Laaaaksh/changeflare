@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+dist/
+out/
+apps/web/public/widget.js
+apps/web/public/widget.js.map
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Prisma
+apps/web/prisma/*.db
+apps/web/prisma/*.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Test / coverage
+coverage/
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts

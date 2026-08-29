@@ -1,0 +1,57 @@
+name: Bug report
+description: Something in Changeflare isn't working as expected
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+      placeholder: |
+        Steps to reproduce:
+        1. ...
+        2. ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Changeflare version
+      description: The release tag or Docker image tag you're running (`git describe --tags` if built from source).
+      placeholder: v0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deploy-method
+    attributes:
+      label: Deployment method
+      options:
+        - docker compose (this repo's docker-compose.yml)
+        - Docker image (ghcr.io) directly
+        - From source (npm run build / npm start)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node.js version (if running from source), Postgres version, browser (if this is a widget/UI bug).
+      placeholder: |
+        OS: Ubuntu 24.04
+        Node: v20.14.0
+        Postgres: 17
+        Browser: Chrome 128
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Server logs, browser console output, or a screenshot. This is optional but speeds up triage a lot.
+    validations:
+      required: false
