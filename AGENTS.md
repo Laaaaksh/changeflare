@@ -51,13 +51,18 @@ clone/build/test workflow and stays authoritative for it.
   built-in `localStorage` global otherwise shadows jsdom's per-window
   implementation and the storage tests fail in a confusing way (right error
   message, wrong object).
-- **Local dev/testing against a throwaway Postgres**: `docker-compose.yml`
-  publishes 5432 on the host by default; if that's taken locally, run a
-  scratch container on another port rather than editing the committed compose
-  file (`docker run --rm -e POSTGRES_USER=changeflare -e
-  POSTGRES_PASSWORD=changeflare -e POSTGRES_DB=changeflare -p
-  <freeport>:5432 postgres:17-alpine`, point `apps/web/.env`'s
-  `DATABASE_URL` at it).
+- **`docker-compose.yml` port collisions**: Postgres binds to
+  `127.0.0.1:${POSTGRES_PORT:-5432}` (loopback only — the image ships default
+  creds) and the app to `${APP_PORT:-3000}`. If either is already taken
+  locally, set `POSTGRES_PORT`/`APP_PORT` in `.env` rather than editing the
+  compose file.
+- **Sibling worktrees of this repo share Docker state.** Compose derives the
+  project name from the directory basename (`changeflare`), so two checkouts
+  both named `changeflare` on the same Docker host reuse the same named
+  volume (`changeflare_postgres-data`) and network — one worktree's `docker
+  compose down` or stale data can surface in another's run. Confirmed by
+  seeing a prior worktree's admin account still present after a fresh `up`.
+  Set `COMPOSE_PROJECT_NAME` if you need real isolation between worktrees.
 
 ## Maintaining this file
 

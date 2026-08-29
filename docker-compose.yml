@@ -9,7 +9,10 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      # Bound to loopback only — this container ships default credentials,
+      # and the app reaches it over the compose network regardless. Override
+      # the host port with POSTGRES_PORT if 5432 is already taken locally.
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U changeflare"]
       interval: 5s
@@ -37,7 +40,8 @@ services:
       target: runtime
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      # Override the host port with APP_PORT if 3000 is already taken locally.
+      - "${APP_PORT:-3000}:3000"
     environment:
       DATABASE_URL: postgresql://changeflare:changeflare@postgres:5432/changeflare
       SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in your .env — see .env.example (openssl rand -base64 32)}
