@@ -12,6 +12,12 @@
 [Install](#install) · [Usage](#usage) · [Configuration](#configuration) · [Limits](#limits) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [License](#license)
 [Code of conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md)
 
+## Demo
+
+![Changeflare demo](docs/assets/demo.gif)
+
+Publishing a post from the admin dashboard, then reading it through the embeddable widget on a separate host page — unread badge, panel, and read state, all against a real local instance. Full quality: [docs/assets/demo.mp4](docs/assets/demo.mp4).
+
 ## What it does
 
 - Adds a bell-icon changelog widget to any page with a single `<script>` tag — no build step, no framework required, ~3.6 KB gzipped
@@ -21,8 +27,6 @@
 - Targets posts to specific visitors by attribute (e.g. `plan: "pro"`) — simple matching, not a segmentation engine to configure
 - Publishes a public, unauthenticated changelog page at `/changelog` from the same posts
 - Runs on infrastructure you already have — one Node process and Postgres, no paid SaaS dependency, no telemetry
-
-<img src="docs/assets/widget-demo.gif" alt="Changeflare widget: a bell icon with an unread badge opens a panel of changelog posts, then a full post" width="900" />
 
 ## Why self-host this
 

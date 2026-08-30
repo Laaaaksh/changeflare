@@ -8,6 +8,9 @@ out/
 apps/web/public/widget.js
 apps/web/public/widget.js.map
 
+# Demo recorder scratch output (raw video, not committed — see scripts/record-demo)
+scripts/record-demo/output/
+
 # Env
 .env
 .env.local

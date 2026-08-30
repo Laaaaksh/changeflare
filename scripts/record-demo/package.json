@@ -1,0 +1,12 @@
+{
+  "name": "record-demo",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only Playwright recorder that captures a real end-to-end Changeflare walkthrough. Not part of the product build.",
+  "scripts": {
+    "record": "node record.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}
