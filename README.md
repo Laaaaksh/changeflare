@@ -9,7 +9,7 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![Self-hosted with Docker](https://img.shields.io/badge/self--hosted-Docker-2496ED?logo=docker&logoColor=white)](#install)
 
-[Install](#install) · [Usage](#usage) · [Configuration](#configuration) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [License](#license)
+[Install](#install) · [Usage](#usage) · [Configuration](#configuration) · [Limits](#limits) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [License](#license)
 [Code of conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md)
 
 ## What it does
@@ -106,6 +106,28 @@ The same posts are also published at `https://your-instance.example/changelog`, 
 - `data-changeflare-selector` / `data-changeflare-position` — mount the trigger inside an existing element instead of a floating corner button
 
 For a single-page app where the visitor logs in after the widget has already loaded, call `window.Changeflare.identify(userId, attributes)` instead of relying on the initial script tag.
+
+## Limits
+
+- **Single admin account.** There's no invite flow, no roles, no team
+  members — whoever runs `/setup` first is the only account that can ever
+  log in. Fine for a solo maintainer or small team sharing one login; not
+  built for per-person access control.
+- **Audience targeting is simple attribute matching, not a rules engine.**
+  A post's conditions are ANDed against whatever attributes the widget was
+  given — no OR logic, no percentage rollouts, no scheduling.
+- **No login rate limiting.** `SECURITY.md` scopes this out deliberately —
+  put a self-hosted instance behind a reverse proxy or WAF that rate-limits
+  `/api/login` if that matters for your deployment.
+- **No TLS termination.** Changeflare serves plain HTTP; run it behind a
+  reverse proxy (Caddy, nginx, your platform's load balancer) for anything
+  reachable outside `localhost`.
+- **Test coverage is unit-level only.** The sanitizer, auth, and audience
+  logic all have real assertion-based tests, but there's no browser/e2e test
+  of the widget's actual DOM (bell icon, badge, Shadow DOM panel) yet.
+- **No email digests, in-app product tours, or roadmap/voting.** Changeflare
+  is deliberately just a changelog widget — [Fider](https://github.com/getfider/fider)
+  covers voting and roadmaps if you need that instead.
 
 ## Changelog
 
