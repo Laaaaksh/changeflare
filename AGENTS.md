@@ -63,6 +63,13 @@ clone/build/test workflow and stays authoritative for it.
   compose down` or stale data can surface in another's run. Confirmed by
   seeing a prior worktree's admin account still present after a fresh `up`.
   Set `COMPOSE_PROJECT_NAME` if you need real isolation between worktrees.
+- **`docs/assets/demo.mp4`/`demo.gif` are captured, not hand-made.**
+  `scripts/record-demo/` is a standalone Playwright package (dev-only, not an
+  npm workspace — it must not become a product dependency) that drives the
+  real UI end to end and writes `output/raw.webm`; `convert.sh` turns that
+  into the two committed assets. Re-run with `make demo` (boots a fresh
+  stack, records, converts, tears down) whenever the admin or widget UI
+  changes enough to make the demo stale — see `scripts/record-demo/README.md`.
 
 ## Maintaining this file
 
