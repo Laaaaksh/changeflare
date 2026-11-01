@@ -17,7 +17,7 @@ An npm workspaces monorepo:
 ## Clone, build, and test
 
 ```bash
-git clone https://github.com/Laaaaksh/changeflare.git
+git clone https://github.com/attentionfs/changeflare.git
 cd changeflare
 npm install
 

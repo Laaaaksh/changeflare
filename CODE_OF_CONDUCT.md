@@ -60,7 +60,7 @@ appointed representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement via a private
-[GitHub security advisory](https://github.com/Laaaaksh/changeflare/security/advisories/new)
+[GitHub security advisory](https://github.com/attentionfs/changeflare/security/advisories/new)
 or by opening a confidential contact through the repository's Issues page. All
 complaints will be reviewed and investigated promptly and fairly.
 

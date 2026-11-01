@@ -26,5 +26,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   cookies
 - Docker Compose self-hosting path (Postgres + migration job + app)
 
-[Unreleased]: https://github.com/Laaaaksh/changeflare/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Laaaaksh/changeflare/releases/tag/v0.1.0
+[Unreleased]: https://github.com/attentionfs/changeflare/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/attentionfs/changeflare/releases/tag/v0.1.0

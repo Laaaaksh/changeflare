@@ -8,7 +8,7 @@ Changeflare is pre-1.0. Security fixes are made against the latest release and
 ## Reporting a vulnerability
 
 Please report vulnerabilities privately via
-[GitHub Security Advisories](https://github.com/Laaaaksh/changeflare/security/advisories/new)
+[GitHub Security Advisories](https://github.com/attentionfs/changeflare/security/advisories/new)
 rather than a public issue. We'll acknowledge reports within a few days.
 
 ## What's in scope

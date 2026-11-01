@@ -2,10 +2,10 @@
 
 **Changeflare is a self-hosted "what's new" widget for your product.** Paste one `<script>` tag to add a bell icon with an unread-count badge to any page, write posts from a small admin dashboard, and see who actually opens them — all without the monthly-active-user pricing meter that Beamer runs on.
 
-[![Star this repo](https://img.shields.io/github/stars/Laaaaksh/changeflare?style=for-the-badge&color=fde047&labelColor=171717&label=star%20this%20repo)](https://github.com/Laaaaksh/changeflare/stargazers)
-[![CI](https://img.shields.io/github/actions/workflow/status/Laaaaksh/changeflare/ci.yml?branch=master&label=CI)](https://github.com/Laaaaksh/changeflare/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Laaaaksh/changeflare?label=release)](https://github.com/Laaaaksh/changeflare/releases)
-[![License: MIT](https://img.shields.io/github/license/Laaaaksh/changeflare)](LICENSE)
+[![Star this repo](https://img.shields.io/github/stars/attentionfs/changeflare?style=for-the-badge&color=fde047&labelColor=171717&label=star%20this%20repo)](https://github.com/attentionfs/changeflare/stargazers)
+[![CI](https://img.shields.io/github/actions/workflow/status/attentionfs/changeflare/ci.yml?branch=master&label=CI)](https://github.com/attentionfs/changeflare/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/attentionfs/changeflare?label=release)](https://github.com/attentionfs/changeflare/releases)
+[![License: MIT](https://img.shields.io/github/license/attentionfs/changeflare)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![Self-hosted with Docker](https://img.shields.io/badge/self--hosted-Docker-2496ED?logo=docker&logoColor=white)](#install)
 
@@ -43,7 +43,7 @@ Beamer's free tier caps out at 1,000 monthly active users, and its paid tiers ($
 **Docker Compose (recommended — brings up Postgres too):**
 
 ```bash
-git clone https://github.com/Laaaaksh/changeflare.git
+git clone https://github.com/attentionfs/changeflare.git
 cd changeflare
 cp .env.example .env        # set SESSION_SECRET — see the comment in the file
 docker compose up --build
@@ -58,7 +58,7 @@ and/or `APP_PORT` in `.env` (commented out in `.env.example`) before running
 **From source, against your own Postgres:**
 
 ```bash
-git clone https://github.com/Laaaaksh/changeflare.git
+git clone https://github.com/attentionfs/changeflare.git
 cd changeflare
 npm install
 cp apps/web/.env.example apps/web/.env   # set DATABASE_URL and SESSION_SECRET
@@ -147,7 +147,7 @@ See [SECURITY.md](SECURITY.md) for supported versions and how to report a vulner
 
 ## Star this repo
 
-If Changeflare is useful to you, [starring it](https://github.com/Laaaaksh/changeflare/stargazers) helps other people find it.
+If Changeflare is useful to you, [starring it](https://github.com/attentionfs/changeflare/stargazers) helps other people find it.
 
 ## License
 
